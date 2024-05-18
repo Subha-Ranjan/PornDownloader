@@ -1,0 +1,23 @@
+{
+  "name": "downloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "clear && nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "http": "^0.0.1-security",
+    "http-proxy-agent": "^7.0.2",
+    "https-proxy-agent": "^7.0.4",
+    "nodemon": "^3.1.0",
+    "pornhub-api": "^0.0.1",
+    "pornhub.js": "^1.12.0",
+    "spankbang": "^0.0.9",
+    "xvideosx": "^1.6.4"
+  }
+}
