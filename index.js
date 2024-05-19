@@ -19,17 +19,16 @@ async function calApiXvideos(){
 console.log("Xvideos API call");
 const url = 'https://www.xvideos.com/video.udubmed29e7/her_nipples_almost_exploded_-_cumslut_cutie_gets_massive_cumshower';
 const details = await xvideos.videos.details({url});
-console.log(details.files)
+console.log(details.files);
+
 }
 
 async function callApiPornHub(){
     console.log("Pornhub API Call");
 
     const url = "https://www.pornhub.com/view_video.php?viewkey=654a393e414f2"
-    pornhub.video(url).then((data)=>console.log(data)).catch((err)=>console.log("So ther is some error: \n",err))
+    pornhub.video(url).then((data)=>res.send(data)).catch((err)=>console.log("So ther is some error: \n",err))
    
-    console.log(url) // first video
-
 }
 
 async function callApiSpankBang(){
@@ -40,6 +39,13 @@ const details = await spankbang.videos.details({url})
 console.log(details.files)
 }
 
-app.get("/", (req,res)=>{res.status(200).send("Server is up and running!!! 🔥")})
+app.get("/", (req,res)=>{res.status(200).send("Server is up and running!!! 🔥")}
+)
 
-app.listen("8000",()=>{console.log("Server started at 8000"); callApiSpankBang()})
+app.post("/", (req,res)=>{
+    const url = "https://www.pornhub.com/view_video.php?viewkey=654a393e414f2"
+    pornhub.video(url).then((data)=>res.send(data)).catch((err)=>console.log("So ther is some error: \n",err))
+}
+)
+
+app.listen("8000",()=>{console.log("Server started at 8000"); callApiSpankBang();callApiPornHub();calApiXvideos();})
