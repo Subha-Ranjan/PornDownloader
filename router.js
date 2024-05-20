@@ -19,54 +19,55 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   const url = await req.body.link;
+  res.send(url);
 
-  if (url.includes("pornhub")) {
-    console.log("Pornhub API calling");
-    let files = [];
-    pornhub
-      .video(url)
-      .then((data) => {
-        data.mediaDefinitions.map((file) => {
-          files.push({
-            url: file.videoUrl.replace(/\\/g, ""),
-            quality: file.quality+"p",
-          });
+  // if (url.includes("pornhub")) {
+  //   console.log("Pornhub API calling");
+  //   let files = [];
+  //   pornhub
+  //     .video(url)
+  //     .then((data) => {
+  //       data.mediaDefinitions.map((file) => {
+  //         files.push({
+  //           url: file.videoUrl.replace(/\\/g, ""),
+  //           quality: file.quality+"p",
+  //         });
 
-          // converter
-          //   .setInputFile(
-          //    videoDetail.videoUrl.replace(/\\/g, "")
-          //   )
-          //   .setOutputFile(videoDetail.videoUrl.replace(/\\/g, "").split('/')[8])
-          //   .start()
-          //   .then(() => {
-          //     console.log("File converted");
-          //   });
+  //         // converter
+  //         //   .setInputFile(
+  //         //    videoDetail.videoUrl.replace(/\\/g, "")
+  //         //   )
+  //         //   .setOutputFile(videoDetail.videoUrl.replace(/\\/g, "").split('/')[8])
+  //         //   .start()
+  //         //   .then(() => {
+  //         //     console.log("File converted");
+  //         //   });
 
-          console.log(data)
-        });
-        videoDetails={ platform:' PornHub',title:data.title, duration:data.duration,image:data.thumb, files: [...files]};
-        console.log(videoDetails);
+  //         console.log(data)
+  //       });
+  //       videoDetails={ platform:' PornHub',title:data.title, duration:data.duration,image:data.thumb, files: [...files]};
+  //       console.log(videoDetails);
 
-        res.send("ph");
-      })
-      .catch((err) => console.log("So ther is some error: \n", err));
-  } else if (url.includes("xvideos")) {
-    console.log("Xvideos API calling");
-    const details = await xvideos.videos.details({ url });
-    let videoDetails = { platform:' Xvideos', title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
+  //       res.send("ph");
+  //     })
+  //     .catch((err) => console.log("So ther is some error: \n", err));
+  // } else if (url.includes("xvideos")) {
+  //   console.log("Xvideos API calling");
+  //   const details = await xvideos.videos.details({ url });
+  //   let videoDetails = { platform:' Xvideos', title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
 
-    console.log(details);
-    res.send("Xv");
-  } else if (url.includes("spankbang")) {
-    console.log("Spankbang API calling");
-    const details = await spankbang.videos.details({ url });
-    let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
-    // videoDetails=videoDetails.filter(a=> a.quality!=='hls' && a.url !=='')
-    console.log(details)
-    res.send("Spank");
-  } else {
-    res.send("Invalid Link");
-  }
+  //   console.log(details);
+  //   res.send("Xv");
+  // } else if (url.includes("spankbang")) {
+  //   console.log("Spankbang API calling");
+  //   const details = await spankbang.videos.details({ url });
+  //   let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
+  //   // videoDetails=videoDetails.filter(a=> a.quality!=='hls' && a.url !=='')
+  //   console.log(details)
+  //   res.send("Spank");
+  // } else {
+  //   res.send("Invalid Link");
+  // }
 });
 
 module.exports = router;
