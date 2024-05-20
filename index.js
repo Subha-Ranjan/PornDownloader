@@ -21,13 +21,13 @@ const cors = require('cors')
 
 // }
 
-// async function callApiPornHub(url){
-//     console.log("Pornhub API Call");
+async function callApiPornHub(){
+    console.log("Pornhub API Call");
 
-//     const url = "https://www.pornhub.com/view_video.php?viewkey=654a393e414f2"
-//     pornhub.video(url).then((data)=>res.send(data)).catch((err)=>console.log("So ther is some error: \n",err))
+    const url = "https://www.pornhub.com/view_video.php?viewkey=654a393e414f2"
+    pornhub.video(url).then((data)=>res.send(data.mediaDefinitions)).catch((err)=>console.log("So ther is some error: \n",err))
    
-// }
+}
 
 // async function callApiSpankBang(url){
 //  console.log("SpankBang api all")
@@ -41,7 +41,8 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req,res)=>{
-  res.status(200).send("Server is up and running!!! 🔥")
+  callApiPornHub();
+  // res.status(200).send("Server is up and running!!! 🔥")
 })
 
 app.use(function(req, res, next) {
