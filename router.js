@@ -69,12 +69,12 @@ router.post("/", async (req, res) => {
   //   res.send("Xv");
   // }
    else if (url.includes("spankbang")) {
-    // console.log("Spankbang API calling");
+    console.log("Spankbang API calling");
     const details = await spankbang.videos.details({ url });
-    // let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
+    let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
     
-    // console.log(details)
-    res.send("Spank");
+    console.log(details)
+    res.send(videoDetails);
   } 
   // else {
   //   res.send("Invalid Link");
