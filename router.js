@@ -19,14 +19,14 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   const url = await req.body.link;
-  if (url.includes("xvideos")) {
-      console.log("Xvideos API calling");
-      const details = await xvideos.videos.details({ url });
-      let videoDetails = { platform:' Xvideos', title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
+  // if (url.includes("xvideos")) {
+  //     console.log("Xvideos API calling");
+  //     const details = await xvideos.videos.details({ url });
+  //     let videoDetails = { platform:' Xvideos', title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
   
-     console.log(videoDetails);
+  //    console.log(videoDetails);
   
-  res.send(videoDetails);}
+  // res.send(videoDetails);}
 
   // else if (url.includes("spankbang")) {
   //     console.log("Spankbang API calling");
@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
 
   
 
-  else if (url.includes("pornhub")) {
+   if (url.includes("pornhub")) {
     console.log("Pornhub API calling");
     let files = [];
     pornhub
@@ -53,22 +53,10 @@ router.post("/", async (req, res) => {
             url: file.videoUrl.replace(/\\/g, ""),
             quality: file.quality+"p",
           });
-
-          // converter
-          //   .setInputFile(
-          //    videoDetail.videoUrl.replace(/\\/g, "")
-          //   )
-          //   .setOutputFile(videoDetail.videoUrl.replace(/\\/g, "").split('/')[8])
-          //   .start()
-          //   .then(() => {
-          //     console.log("File converted");
-          //   });
-          
         });
-        videoDetails={ platform:' PornHub',title:data.title, duration:data.duration,image:data.thumb, files: [...files]};
+        videoDetails={ platform:' PornHub', title:data.title, duration:data.duration,image:data.thumb, files: [...files]};
         console.log(videoDetails);
-
-        res.send(videoDetails);
+        res.send(data);
       })
       .catch((err) => console.log("So there is some error: \n", err));
   } 
