@@ -49,10 +49,12 @@ router.post("/", async (req, res) => {
       .video(url)
       .then((data) => {
         data.mediaDefinitions.map((file) => {
+        if(Array.isArray(file.quality)===false){
           files.push({
             url: file.videoUrl.replace(/\\/g, ""),
             quality: file.quality+"p",
-          });
+          })
+        }
         });
         videoDetails={ platform:' PornHub', title:data.title, duration:data.duration,image:data.thumb, files: [...files]};
         console.log(videoDetails);
