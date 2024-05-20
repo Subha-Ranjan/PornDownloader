@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
-
 const routerLink = require('./router')
-
 const cors = require('cors')
 
+const { PornHub } = require("pornhub.js");
+const pornhub = new PornHub()
 
 // const {HttpsProxyAgent} = require('https-proxy-agent')
 // const proxy = 'http://168.63.76.32:3128'
@@ -21,7 +21,7 @@ const cors = require('cors')
 
 // }
 
-async function callApiPornHub(){
+async function callApiPornHub(res){
     console.log("Pornhub API Call");
 
     const url = "https://www.pornhub.com/view_video.php?viewkey=654a393e414f2"
@@ -41,7 +41,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req,res)=>{
-  callApiPornHub();
+  callApiPornHub(res);
   // res.status(200).send("Server is up and running!!! 🔥")
 })
 
