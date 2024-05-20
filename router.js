@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const url = req.body.link;
+  const url = await req.body.link;
 
   if (url.includes("pornhub")) {
     console.log("Pornhub API calling");
@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
   } else if (url.includes("xvideos")) {
     console.log("Xvideos API calling");
     const details = await xvideos.videos.details({ url });
-    let videoDetails = { platform:' Xvideos',title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
+    let videoDetails = { platform:' Xvideos', title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
 
     console.log(details);
     res.send("Xv");
