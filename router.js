@@ -47,7 +47,7 @@ router.post("/", async (req, res) => {
         videoDetails={ platform:' PornHub',title:data.title, duration:data.duration,image:data.thumb, files: [...files]};
         console.log(videoDetails);
 
-        res.send(videoDetails);
+        res.send("ph");
       })
       .catch((err) => console.log("So ther is some error: \n", err));
   } else if (url.includes("xvideos")) {
@@ -56,14 +56,14 @@ router.post("/", async (req, res) => {
     let videoDetails = { platform:' Xvideos',title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
 
     console.log(details);
-    res.send(videoDetails);
+    res.send("Xv");
   } else if (url.includes("spankbang")) {
     console.log("Spankbang API calling");
     const details = await spankbang.videos.details({ url });
     let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
     // videoDetails=videoDetails.filter(a=> a.quality!=='hls' && a.url !=='')
     console.log(details)
-    res.send(videoDetails);
+    res.send("Spank");
   } else {
     res.send("Invalid Link");
   }
