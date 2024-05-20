@@ -19,16 +19,7 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   const url = await req.body.link;
-  if (url.includes("xvideos")) {
-      console.log("Xvideos API calling");
-      const details = await xvideos.videos.details({ url });
-      let videoDetails = { platform:' Xvideos', title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
-  
-     console.log(details);
-  
-  res.send(videoDetails);}
-
-  else if (url.includes("spankbang")) {
+  if (url.includes("spankbang")) {
       console.log("Spankbang API calling");
       const details = await spankbang.videos.details({ url });
       let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
@@ -36,10 +27,7 @@ router.post("/", async (req, res) => {
       console.log(details)
       res.send("Spank");
     } 
-  else {
-      res.send("Invalid Link");
-    }
-
+ 
   
 
   // if (url.includes("pornhub")) {
