@@ -69,7 +69,7 @@ router.post("/", async (req, res) => {
         videoDetails={ platform:' PornHub',title:data.title, duration:data.duration,image:data.thumb, files: [...files]};
         console.log(videoDetails);
 
-        res.send("ph");
+        res.send(videoDetails);
       })
       .catch((err) => console.log("So there is some error: \n", err));
   } 
