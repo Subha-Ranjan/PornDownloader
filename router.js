@@ -14,7 +14,7 @@ const ffmpeg = require("fluent-ffmpeg");
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 router.get("/", (req, res) => {
-  res.send("API wrkoing fine");
+  res.send("API working fine");
 });
 
 router.post("/", async (req, res) => {
