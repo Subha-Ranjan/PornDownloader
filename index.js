@@ -25,7 +25,9 @@ async function callApiPornHub(res){
     console.log("Pornhub API Call");
 
     const url = "https://www.pornhub.com/view_video.php?viewkey=654a393e414f2"
-    pornhub.video(url).then((data)=>res.send(data)).catch((err)=>console.log("So ther is some error: \n",err))
+    // pornhub.video(url).then((data)=>res.send(data)).catch((err)=>console.log("So ther is some error: \n",err))
+    data = await pornhub.video(url);
+    res.send(data)
    
 }
 
@@ -40,8 +42,10 @@ async function callApiPornHub(res){
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req,res)=>{
-  callApiPornHub(res);
+app.get("/", async (req,res)=>{
+  const url = "https://www.pornhub.com/view_video.php?viewkey=654a393e414f2";
+  data = await pornhub.video(url);
+  res.send(data)
   // res.status(200).send("Server is up and running!!! 🔥")
 })
 
