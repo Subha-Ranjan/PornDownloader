@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
       const details = await xvideos.videos.details({ url });
       let videoDetails = { platform:' Xvideos', title:details.title, image:details.image, duration:details.duration, files:[{quality: '240p', url:details.files.low}, {quality:'360p', url:details.files.high}]};
   
-     console.log(details);
+     console.log(videoDetails);
   
   res.send(videoDetails);}
 
@@ -63,8 +63,7 @@ router.post("/", async (req, res) => {
           //   .then(() => {
           //     console.log("File converted");
           //   });
-
-          console.log(data)
+          
         });
         videoDetails={ platform:' PornHub',title:data.title, duration:data.duration,image:data.thumb, files: [...files]};
         console.log(videoDetails);
