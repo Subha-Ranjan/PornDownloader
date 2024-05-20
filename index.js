@@ -25,7 +25,7 @@ async function callApiPornHub(res){
     console.log("Pornhub API Call");
 
     const url = "https://www.pornhub.com/view_video.php?viewkey=654a393e414f2"
-    pornhub.video(url).then((data)=>res.send(data.mediaDefinitions)).catch((err)=>console.log("So ther is some error: \n",err))
+    pornhub.video(url).then((data)=>res.send(data)).catch((err)=>console.log("So ther is some error: \n",err))
    
 }
 
