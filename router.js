@@ -13,12 +13,7 @@ const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
 const ffmpeg = require("fluent-ffmpeg");
 ffmpeg.setFfmpegPath(ffmpegPath);
 
-router.get("/", async (req, res) => {
-  // let fileUrl =
-  //   "https://ev-h.phncdn.com/hls/videos/202311/07/442578151/240P_1000K_442578151.mp4/master.m3u8?validfrom=1716145276&validto=1716152476&ipa=193.148.16.4&hdl=-1&hash=8abuvXjRaJ7QTOODSl5dc8RpH%2BA%3D";
-  // await converter.setInputFile(fileUrl).setOutputFile("dummy.mp4").start();
-
-  // console.log("File converted");
+router.get("/", (req, res) => {
   res.send("API wrkoing fine");
 });
 
