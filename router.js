@@ -70,7 +70,7 @@ router.post("/", async (req, res) => {
   // }
    else if (url.includes("spankbang")) {
     // console.log("Spankbang API calling");
-    // const details = await spankbang.videos.details({ url });
+    const details = await spankbang.videos.details({ url });
     // let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
     
     // console.log(details)
