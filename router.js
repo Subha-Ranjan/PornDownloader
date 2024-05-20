@@ -67,14 +67,16 @@ router.post("/", async (req, res) => {
 
   //   console.log(details);
   //   res.send("Xv");
-  // } else if (url.includes("spankbang")) {
-  //   console.log("Spankbang API calling");
-  //   const details = await spankbang.videos.details({ url });
-  //   let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
-  //   // videoDetails=videoDetails.filter(a=> a.quality!=='hls' && a.url !=='')
-  //   console.log(details)
-  //   res.send("Spank");
-  // } else {
+  // }
+   else if (url.includes("spankbang")) {
+    // console.log("Spankbang API calling");
+    // const details = await spankbang.videos.details({ url });
+    // let videoDetails = { platform:' Spankbang',title:details.name, duration:details.duration,image:details.thumbNail, files: [...details.files]};
+    
+    // console.log(details)
+    res.send("Spank");
+  } 
+  // else {
   //   res.send("Invalid Link");
   // }
 });
